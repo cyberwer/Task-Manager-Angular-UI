@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header style="padding-left:35%;">
+      <h4 class="center">Edit Task</h4>
+    </mat-card-header>
+    <mat-card-content>    
+      <form  [formGroup]="taskEditForm" (ngSubmit)="onSubmitEditrTaskForm()" autocomplete="off">
+        <div class="flex-container space-around"> 
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:300px;">
+              <mat-label>Task Name</mat-label>
+              <input matInput formControlName="TaskName"/>
+            </mat-form-field> 
+
+            <mat-form-field floatLabel="auto" appearance="outline" class="mat-form-field-Width">
+                <mat-label>Date</mat-label>                   
+                <input matInput formControlName="TaskDateTime"/> 
+                <mat-hint align="end">mm/dd/yy</mat-hint>            
+              </mat-form-field>  
+          
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:500px;">
+              <mat-label>Task Detail</mat-label>
+              <input matInput formControlName="TaskDetail"/>              
+            </mat-form-field>          
+           
+            <button mat-raised-button [disabled]="loading" class="btn btn-primary" style="height:45px;">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+               Save
+            </button>
+            &nbsp; &nbsp;
+            <button mat-raised-button (click)="closeDialog()" class="btn btn-primary" style="height:45px;">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Close
+          </button>
+        </div>
+      </form>
+      </mat-card-content>
+</mat-card>

@@ -1,0 +1,51 @@
+
+<div class="login_container">
+    <div class="row child_row"></div>
+    <div class="row login_row">
+                      
+     <mat-card class ="centered mat-elevation-z5">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()" autocomplete="off">
+                <mat-card-header>       <h3 style="color: steelblue;">Login</h3>                       
+                 </mat-card-header>               
+                <mat-card-content>   
+                            <mat-form-field floatLabel="auto" hideRequiredMarker appearance="outline">
+                            <mat-label>ID</mat-label>
+                            <input matInput formControlName="username" required/>
+                            <!--mat-hint align="end">Work email</mat-hint-->                           
+                        </mat-form-field>                       
+                        <mat-form-field floatLabel="auto" hideRequiredMarker appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" type="password" required style="border-style: hidden;"/>
+                            <!--mat-hint align="end">Min 8 Characters</mat-hint-->                           
+                        </mat-form-field>                  
+                      
+                   
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary" style="width:200px;">                           
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Login
+                        </button>  
+                     </div>     
+                     &nbsp;              
+                     <div class="form-group">                           
+                      <button  class="btn btn-primary" style="width:200px;" (click)="Register()">                     
+                        Register
+                    </button>
+                    </div>
+                 </mat-card-actions>
+                 <mat-card-footer>                                            
+                    <div style="width:260px;margin-left:auto;margin-right: auto;" class="alert alert-danger" role="alert" *ngIf="IsCredentailValid">
+                        Invalid username or password
+                    </div>
+                    <!--div *ngIf="loginForm.get('password').dirty; then closeAlert();"></div-->
+                 </mat-card-footer>
+                </form>
+     </mat-card>         
+  
+    </div>
+    <div class="row child_row"></div>
+  </div>
+  
+  

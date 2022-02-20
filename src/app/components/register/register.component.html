@@ -1,0 +1,78 @@
+
+<div class="container">    
+                 
+      
+          <mat-card class="mat-elevation-z5">  
+             <form [formGroup]="registerForm" (ngSubmit)="onSubmitSignUpForm()">   
+                <div class="card-header">                             
+                    <p class="display-5 text-center" style="color:steelblue;margin:5px;"> Registration </p>                    
+                </div>  
+                <hr/>           
+                <mat-card-content>                    
+
+                        <h5 style="color: steelblue; text-align:left;">Personal </h5> 
+
+                        <div class="flex-container space-evenly"> 
+
+                         <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="FirstName" required/>                             
+                        </mat-form-field>
+
+                         <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="LastName" required/>                                
+                        </mat-form-field>
+                                                                         
+
+                           <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput formControlName="MobileNumber" required/>  
+                            <mat-hint align="end">Text message capable</mat-hint>                              
+                          </mat-form-field>
+
+                        </div>                            
+                       
+                        
+                        <h5 style="color: steelblue; text-align:left;">Account</h5>
+                        <div class="flex-container space-evenly"> 
+
+                        <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="Email" required type="email" style="border-style: hidden;"/> 
+                            <mat-hint align="end">User Name</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="Password" type="password" required style="border-style: hidden;"/>
+                            <mat-hint align="end">Min 8 Characters</mat-hint>
+                        </mat-form-field>                        
+                        
+
+                        <mat-form-field floatLabel="auto" appearance="outline">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput formControlName="ConfirmPassword" type="password" required style="border-style: hidden;"/>                               
+                        </mat-form-field> 
+
+                        </div>                                      
+                      
+                     
+                   
+                </mat-card-content>
+
+                <div class="form-group">
+                    <button  mat-raised-button [disabled]="loading"  class="btn btn-primary" style="width:200px;color: steelblue !important;">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Register
+                    </button> 
+                 
+                </div> 
+            </form>   
+          </mat-card>
+                 
+  
+    
+</div>
+
+

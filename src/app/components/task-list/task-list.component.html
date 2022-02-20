@@ -1,0 +1,102 @@
+<div class="container">
+  <button mat-raised-button (click)="logOff()" class="btn btn-primary" style="height:45px;">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+  Logout
+</button>
+&nbsp;
+  <mat-card style="margin-top:10px;">
+    <mat-card-header style="padding-left:35%;">
+      <h2 class="center">Tasks List</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <h6>+ Add Task</h6>
+      <form  [formGroup]="taskForm" (ngSubmit)="onSubmitNewTaskForm()" autocomplete="off">
+        <div class="flex-container space-around"> 
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:300px;">
+              <mat-label>Task Name</mat-label>
+              <input matInput formControlName="TaskName"/>
+            </mat-form-field> 
+            &nbsp;  
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:500px;">
+              <mat-label>Task Detail</mat-label>
+              <input matInput formControlName="TaskDetail"/>
+            </mat-form-field>          
+            &nbsp;       
+           <mat-form-field floatLabel="auto" appearance="outline" class="mat-form-field-Width">
+              <mat-label>Date</mat-label>                   
+              <input matInput formControlName="TaskDateTime"/>    
+              <mat-hint align="end">mm/dd/yy</mat-hint>         
+            </mat-form-field>  
+            &nbsp;  
+            <button mat-raised-button [disabled]="loading" class="btn btn-primary" style="height:45px;">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Add
+            </button>
+        </div>
+      </form>
+        <hr/>
+        <div class="row">
+              
+            <h6 class="h6sectionHeading">My Task List</h6>  
+         
+          <mat-table [dataSource]="dataSource">                    
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="TaskDateTime">
+              <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+              <mat-cell *matCellDef="let ITask">{{ITask.taskDateTime | date: 'M/d/yy'}}</mat-cell>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="TaskName">
+              <mat-header-cell *matHeaderCellDef> Task </mat-header-cell>
+              <mat-cell *matCellDef="let ITask"> {{ITask.taskName}} </mat-cell>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="TaskDetail">
+              <mat-header-cell *matHeaderCellDef> Detail </mat-header-cell>
+              <mat-cell *matCellDef="let ITask"> {{ITask.taskDetail}} </mat-cell>
+            </ng-container>
+        
+                
+             <!-- Name Column -->
+             <ng-container matColumnDef="Action">
+              <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+              <mat-cell *matCellDef="let ITask">
+                <div class="btn-group" dropdown placement="bottom left">
+                   <button style="background-color:steelblue;color:white;" type="button" class="btn btn-sm dropdown-toggle" [matMenuTriggerFor]="menu">
+                       <i class="fa fa-cog"></i>&nbsp;{{ 'Actions' }}
+                   </button>
+                   <mat-menu #menu="matMenu">
+                    <ng-template matMenuContent>                   
+                    <button mat-menu-item (click)="openEditialog(ITask.tasksID)">
+                      <mat-icon class="actionIcons" matTooltip="Mark As Archive">edit</mat-icon>  
+                      <span>Edit</span>
+                    </button>                  
+                    <button mat-menu-item (click)="delete(ITask.tasksID)">
+                      <mat-icon class="actionIcons" matTooltip="Mark For Deletion">delete_outline</mat-icon>
+                      <span>Delete</span>
+                    </button>
+                  </ng-template>
+                  </mat-menu>
+                </div>
+              </mat-cell>         
+            </ng-container>       
+            
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          
+          <div *ngIf="msgNoData | async" class="no-records">
+            <h5 align="center" style="color:red;">No records found</h5>
+          </div>
+      
+         
+      
+        </div>      
+    </mat-card-content>
+  </mat-card>  
+   
+
+</div>

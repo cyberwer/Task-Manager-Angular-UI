@@ -1,0 +1,30 @@
+.container{
+    margin: 0px;
+    padding: 10% 35%;    
+    height: 100%;
+    width: 100%; 
+    background-color: white; 
+  
+    
+}
+
+.row{
+    margin:0px;
+    padding:0px;  
+    height: 100%;
+    width: 100%;
+    background-color: white;
+
+}
+
+.mat-card{
+    margin: 0px;
+    padding: 20px;
+    background-color: whitesmoke;
+    width: 700px;
+    height: 500px;
+}
+
+.card-body{
+    padding: 20px;
+}

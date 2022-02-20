@@ -1,0 +1,34 @@
+.container{
+    margin-left:10%px;
+    padding:50px;
+    width:100%;
+    background-color: whitesmoke;   
+}
+
+.container h6{
+    color: steelblue;
+}
+
+.container h2{
+    color: steelblue;
+    text-align: center;
+}
+
+.center {
+    display: flex;   
+    justify-content: center;
+  }
+
+  .mat-column-TaskDateTime {
+    flex: 0 0 10%;
+}
+.mat-column-TaskName {
+    flex: 0 0 15%;
+}
+.mat-column-TaskDetail {
+    flex: 0 0 65%;
+}
+.mat-column-Action {
+    flex: 0 0 10%;
+}
+
