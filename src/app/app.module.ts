@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
 
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { InterceptorService } from './service/interceptor.service';
@@ -38,7 +39,13 @@ import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit
     MaterialModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      {path: 'dashboard', component:TaskListComponent}
+    ],{ onSameUrlNavigation: 'reload' })
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [AuthGuard,
     {

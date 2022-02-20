@@ -1,6 +1,6 @@
 <mat-card>
-    <mat-card-header style="padding-left:35%;">
-      <h4 class="center">Edit Task</h4>
+    <mat-card-header>
+      <h4 style="padding-left:auto;color:steelblue;">Edit Task - {{taskData.taskName}} </h4>
     </mat-card-header>
     <mat-card-content>    
       <form  [formGroup]="taskEditForm" (ngSubmit)="onSubmitEditrTaskForm()" autocomplete="off">

@@ -15,7 +15,7 @@ export class TaskEditDialogComponent implements OnInit {
   taskEditForm:FormGroup;
   taskID: number = -1;
   taskData = null;
-
+  
   constructor(private formBuilder: FormBuilder,
     private userService: UserService,
     private toastr : ToastrService,  
@@ -25,8 +25,8 @@ export class TaskEditDialogComponent implements OnInit {
   ngOnInit(){    
     //passing value from parent to this dialog
    this.taskID = this.data.TaskIDValue;  
-   this.GetSelectedTask(this.taskID); 
-  
+   this.GetSelectedTask(this.taskID);
+       
 
     this.taskEditForm = this.formBuilder.group({   
       TasksID:  ['',[Validators.required]],    
@@ -54,6 +54,7 @@ export class TaskEditDialogComponent implements OnInit {
     try{
       await this.userService.getTaskDetailByID(ID).subscribe((data) => {     
         this.taskData = data;  
+        console.log(this.taskData);
       })
     }
     catch(err){

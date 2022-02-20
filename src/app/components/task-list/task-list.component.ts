@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators , ReactiveFormsModule} from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Router, NavigationEnd,ActivatedRoute} from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/service/account.service';
@@ -32,6 +32,7 @@ export class TaskListComponent implements OnInit {
     private accountService: AccountService,
     private toastr : ToastrService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public dialog: MatDialog) {} 
      
 
@@ -64,12 +65,16 @@ export class TaskListComponent implements OnInit {
       console.error(err);
       }
       this.loading = false;
-      //this.refresh();   
+      this.refreshComponent();   
   }    
 
   refresh(){
     this.ngOnInit();
   }
+
+  refreshComponent(){
+    this.router.navigate([this.router.url])
+ }
 
   clearForm(){
     this.taskForm.patchValue({      
