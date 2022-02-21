@@ -65,11 +65,12 @@ export class TaskListComponent implements OnInit {
       console.error(err);
       }
       this.loading = false;
-      this.refreshComponent();   
+      this.refresh();   
   }    
 
   refresh(){
-    this.ngOnInit();
+    //this.ngOnInit();
+    window.location.reload();
   }
 
   refreshComponent(){
@@ -115,7 +116,8 @@ export class TaskListComponent implements OnInit {
     }
     catch(err){
       console.log(err.message);
-    }   
+    }  
+    this. refresh(); 
   }
 
 }
